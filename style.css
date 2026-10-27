@@ -1,0 +1,622 @@
+/*
+ * Feuille de style de la landing page.
+ * Organisation : variables et base, en-tete/hero, sections, responsive,
+ * puis charte finale, interactions visuelles, logo et barre de telechargement.
+ * Les variables :root redéfinies plus bas sont les valeurs finales de la charte.
+ */
+:root {
+  /* Couleurs de marque et polices système pour conserver une page légère. */
+  color-scheme: light;
+  --navy: #1b4264;
+  --navy-dark: #12324e;
+  --navy-deep: #102b43;
+  --blue-soft: #eaf1f6;
+  --accent: #efc979;
+  --accent-dark: #9a7130;
+  --ink: #192b3a;
+  --muted: #657482;
+  --line: #e7ebee;
+  --paper: #fff;
+  --offwhite: #f5f7f8;
+  --green: #2d7b69;
+  --font: 'DM Sans', 'Segoe UI', sans-serif;
+  --display: 'Manrope', 'Segoe UI', sans-serif;
+}
+
+* { box-sizing: border-box; }
+/* Règles globales : défilement fluide, typographie de secours et largeur commune. */
+html { scroll-behavior: smooth; scroll-padding-top: 85px; }
+body { margin: 0; color: var(--ink); background: var(--paper); font-family: var(--font); -webkit-font-smoothing: antialiased; }
+a { color: inherit; }
+.container { width: min(1120px, calc(100% - 40px)); margin-inline: auto; }
+a:focus-visible { outline: 3px solid #e8bd67; outline-offset: 4px; }
+
+/* En-tete fixe, logo, liens de navigation et styles communs des boutons. */
+.site-header { height: 70px; background: rgba(255,255,255,.97); border-bottom: 1px solid rgba(22,54,78,.07); position: sticky; top: 0; z-index: 20; backdrop-filter: blur(14px); }
+.header-inner, .footer-inner { height: 100%; display: flex; align-items: center; justify-content: space-between; }
+.brand { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; }
+.brand-mark, .app-brand-mark { width: 36px; height: 36px; display: grid; place-items: center; color: #fff; background: var(--navy); border-radius: 11px; font-family: var(--display); font-size: 19px; font-weight: 800; font-style: italic; }
+.brand-name { color: var(--navy); font-family: var(--display); font-size: 17px; font-weight: 800; letter-spacing: -.8px; }
+.brand-name span { font-weight: 500; }
+.button { min-height: 48px; display: inline-flex; align-items: center; justify-content: center; gap: 9px; border: 0; border-radius: 9px; font-family: var(--font); font-weight: 700; text-decoration: none; transition: transform .2s ease, box-shadow .2s ease, background .2s ease; }
+.button:hover { transform: translateY(-2px); }
+.button-outline { min-height: 40px; padding: 0 16px; border: 1px solid #dce5eb; color: var(--navy); font-size: 13px; }
+.button-outline:hover { background: var(--blue-soft); }
+.button-outline span { font-size: 16px; }
+.main-nav { display: none; align-items: center; gap: 27px; }
+.main-nav a { color: #536979; font-size: 12px; font-weight: 700; text-decoration: none; transition: color .18s ease; }
+.main-nav a:hover { color: var(--navy); }
+
+/* Section hero, promesse principale et appels au telechargement Android/Windows. */
+.hero { position: relative; overflow: hidden; color: white; background: radial-gradient(ellipse at 82% 45%, #2b5b7d 0%, transparent 36%), linear-gradient(115deg, #163955 0%, var(--navy) 54%, #163b58 100%); }
+.hero::before { position: absolute; inset: 0; content: ''; opacity: .15; background-image: linear-gradient(rgba(255,255,255,.08) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.08) 1px, transparent 1px); background-size: 44px 44px; mask-image: linear-gradient(90deg, transparent, black 80%); }
+.hero-layout { position: relative; display: grid; gap: 31px; align-items: center; padding-block: 52px 55px; }
+.hero-copy { max-width: 610px; }
+.eyebrow { margin: 0 0 19px; color: #b6d2e5; font-size: 10px; font-weight: 800; letter-spacing: 1.65px; }
+.eyebrow-dot { width: 7px; height: 7px; display: inline-block; margin-right: 7px; border-radius: 50%; background: #75c4a6; box-shadow: 0 0 0 4px rgba(117,196,166,.15); vertical-align: 1px; }
+h1, h2, h3, p { margin-top: 0; }
+h1, h2 { font-family: var(--display); letter-spacing: -1.6px; }
+.hero h1 { max-width: 620px; margin-bottom: 18px; font-size: clamp(34px, 4.4vw, 49px); line-height: 1.12; font-weight: 800; }
+.hero-title-brand { white-space: nowrap; }
+.hero h1 span { color: #9dc7df; }
+.hero-lead { max-width: 510px; margin-bottom: 27px; color: #d3e2ec; font-size: 15px; line-height: 1.75; }
+.hero-actions { display: grid; gap: 10px; max-width: 410px; }
+.button-download { min-height: 62px; padding: 10px 15px; justify-content: flex-start; gap: 12px; color: var(--navy-dark); background: var(--accent); box-shadow: 0 9px 22px rgba(0,0,0,.19); }
+.button-download:hover { box-shadow: 0 13px 28px rgba(0,0,0,.25); background: #f5d894; }
+.button-download-secondary { border: 1px solid rgba(255,255,255,.4); color: #fff; background: rgba(255,255,255,.09); box-shadow: none; }
+.button-download-secondary:hover { border-color: #fff; color: var(--navy-dark); background: #fff; box-shadow: 0 10px 22px rgba(0,0,0,.16); }
+.button-icon { width: 37px; height: 37px; flex: 0 0 37px; display: grid; place-items: center; border-radius: 8px; color: white; background: var(--navy); font-size: 22px; }
+.button-download-secondary .button-icon { color: var(--navy-dark); background: #fff; }
+.button-download-secondary:hover .button-icon { color: white; background: var(--navy); }
+.windows-icon { font-size: 23px; }
+.button-download strong, .button-download small { display: block; text-align: left; }
+.button-download strong { font-size: 13px; }
+.button-download small { margin-top: 3px; color: #755c31; font-size: 10px; font-weight: 600; }
+.button-download-secondary small { color: #c4d5e0; }
+.button-download-secondary:hover small { color: #71818d; }
+.button-arrow { margin-left: auto; color: var(--accent-dark); }
+.button-download-secondary .button-arrow { color: #d3e2ec; }
+.button-download-secondary:hover .button-arrow { color: var(--navy); }
+.hero-note { display: flex; align-items: center; gap: 7px; margin: 15px 0 0; color: #c3d6e2; font-size: 10px; }
+.hero-note span { color: #8bd1ad; font-size: 14px; }
+
+/* Illustration initiale de l'application et elements decoratifs associes. */
+.hero-visual { position: relative; width: min(100%, 365px); min-height: 360px; justify-self: center; display: grid; place-items: center; isolation: isolate; }
+.visual-glow { position: absolute; z-index: -1; width: 330px; height: 330px; border: 1px solid rgba(255,255,255,.1); border-radius: 50%; box-shadow: 0 0 0 34px rgba(255,255,255,.025), 0 0 0 72px rgba(255,255,255,.02); }
+.app-card { position: relative; z-index: 1; width: min(266px, 78vw); padding: 17px; border: 1px solid rgba(255,255,255,.78); border-radius: 17px; background: #fff; box-shadow: 0 28px 65px rgba(5,24,39,.33); color: var(--ink); transform: rotate(2deg); }
+.app-topbar { display: flex; align-items: center; gap: 9px; padding-bottom: 18px; border-bottom: 1px solid #edf0f2; }
+.app-brand-mark { width: 30px; height: 30px; border-radius: 8px; font-size: 15px; }
+.app-topbar b, .app-topbar small { display: block; }
+.app-topbar b { color: var(--navy); font-size: 10px; letter-spacing: .8px; }
+.app-topbar small { margin-top: 2px; color: #8b969e; font-size: 7px; letter-spacing: 1.2px; }
+.app-menu { margin-left: auto; color: #9ba8b0; font-size: 13px; letter-spacing: 2px; }
+.app-greeting { display: flex; justify-content: space-between; margin: 16px 0 12px; color: #263d4d; font-size: 12px; font-weight: 700; }
+.app-greeting span { color: #8a9aa5; }
+.app-profile { display: flex; align-items: center; gap: 9px; padding: 10px; border: 1px solid #e7edf1; border-radius: 8px; background: #fafcfd; }
+.profile-shape { width: 25px; height: 25px; display: grid; grid-template-columns: repeat(2, 1fr); gap: 2px; padding: 4px; border: 1px solid #84a1b4; border-radius: 3px; transform: skewY(-8deg); }
+.profile-shape i { border: 1px solid #84a1b4; }
+.app-profile small, .app-profile b { display: block; }
+.app-profile small { color: #92a0a9; font-size: 6px; letter-spacing: .6px; }
+.app-profile b { margin-top: 3px; color: #253e50; font-size: 10px; }
+.check-mark { width: 17px; height: 17px; display: grid; place-items: center; margin-left: auto; border-radius: 50%; color: #fff; background: #58a889; font-size: 10px; }
+.measurement { display: flex; align-items: center; justify-content: space-between; padding: 10px 1px 8px; border-bottom: 1px solid #eef0f2; color: #74838e; font-size: 9px; }
+.measurement strong { color: #293d4b; font-size: 12px; }
+.measurement strong small { color: #95a1a8; font-size: 8px; font-weight: 500; }
+.result-box { margin-top: 12px; padding: 9px; border-radius: 7px; background: #eff7f3; }
+.result-box span, .result-box b { display: block; }
+.result-box span { margin-bottom: 3px; color: #6b8a7d; font-size: 8px; }
+.result-box b { color: #34785f; font-size: 9px; }
+.app-action { display: flex; align-items: center; justify-content: space-between; margin-top: 10px; padding: 9px 11px; border-radius: 6px; color: white; background: var(--navy); font-size: 9px; font-weight: 700; }
+.visual-tag { position: absolute; z-index: 2; display: flex; align-items: center; gap: 7px; padding: 10px 13px; border: 1px solid rgba(255,255,255,.7); border-radius: 7px; color: #314a5c; background: white; box-shadow: 0 9px 24px rgba(5,24,39,.16); font-size: 9px; font-weight: 700; }
+.visual-tag span { color: #47a580; }
+.tag-top { top: 35px; right: 0; }
+.tag-bottom { bottom: 38px; left: 0; }
+.visual-ruler { position: absolute; right: 11px; bottom: 8px; left: 11px; display: flex; justify-content: space-between; border-top: 1px solid rgba(255,255,255,.35); color: rgba(255,255,255,.55); font-size: 7px; }
+.visual-ruler span { position: relative; padding-top: 5px; }
+.visual-ruler span::before { position: absolute; top: 0; left: 0; height: 4px; border-left: 1px solid rgba(255,255,255,.4); content: ''; }
+
+/* Titres de section, conteneurs, cartes d'avantages et variantes de leurs icones. */
+
+/* Bande de réassurance fondée sur les fonctions et l'origine du produit. */
+.trust-strip { border-bottom: 1px solid #edf0f2; background: #fff; }
+.trust-items { display: grid; gap: 13px; padding-block: 17px; }
+.trust-items > div { display: flex; align-items: center; justify-content: center; gap: 9px; color: #536a79; font-size: 11px; font-weight: 700; }
+.trust-icon { width: 27px; height: 27px; display: grid; place-items: center; border-radius: 8px; color: var(--navy); background: #edf3f7; font-size: 15px; }
+.trust-divider { display: none; }
+
+/* Espacement partagé et cartes de présentation des avantages. */
+.section-pad { padding-block: 78px; }
+.section-heading { max-width: 590px; margin: 0 auto 34px; text-align: center; }
+.eyebrow-dark { color: #70899b; }
+.section-heading h2, .install h2, .about h2 { margin-bottom: 12px; color: var(--navy-dark); font-size: clamp(29px, 7vw, 40px); line-height: 1.2; }
+.section-heading h2 span, .install h2 span, .about h2 span { color: #7797ac; }
+.section-heading > p:last-child { margin-bottom: 0; color: var(--muted); font-size: 14px; }
+.benefit-grid { display: grid; gap: 13px; }
+.benefit-card { position: relative; min-height: 207px; overflow: hidden; padding: 22px 21px; border: 1px solid var(--line); border-radius: 12px; background: linear-gradient(145deg, #fff, #fbfcfd); box-shadow: 0 5px 16px rgba(23,54,77,.025); transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease; }
+.benefit-card:hover { transform: translateY(-4px); border-color: #cddbe4; box-shadow: 0 14px 30px rgba(23,54,77,.08); }
+.card-icon { width: 39px; height: 39px; display: grid; place-items: center; margin-bottom: 18px; border-radius: 10px; font-size: 22px; font-weight: 700; }
+.icon-blue { color: var(--navy); background: #eaf2f7; }
+.icon-sand { color: #9a7643; background: #f6f0e5; }
+.icon-green { color: #41866c; background: #eaf4ef; }
+.benefit-card h3 { margin-bottom: 8px; color: #20394c; font-family: var(--display); font-size: 16px; letter-spacing: -.3px; }
+.benefit-card p { max-width: 305px; margin-bottom: 0; color: var(--muted); font-size: 12px; line-height: 1.7; }
+.card-number { position: absolute; top: 13px; right: 16px; color: #eef1f3; font-family: var(--display); font-size: 23px; font-weight: 800; }
+
+/* Guide d'installation sur fond gris clair pour distinguer cette étape. */
+.install { background: var(--offwhite); }
+.install-layout { display: grid; gap: 30px; }
+.install-intro { max-width: 430px; }
+.install-intro > p:not(.eyebrow) { margin-bottom: 18px; color: var(--muted); font-size: 14px; line-height: 1.7; }
+.install h2 { font-size: clamp(29px, 7vw, 39px); }
+.text-link { display: inline-flex; align-items: center; gap: 10px; color: var(--navy); font-size: 12px; font-weight: 800; text-decoration: none; }
+.text-link span { font-size: 17px; transition: transform .2s ease; }
+.text-link:hover span { transform: translateX(4px); }
+.steps { display: grid; gap: 10px; margin: 0; padding: 0; list-style: none; }
+.step { position: relative; display: flex; gap: 13px; min-height: 102px; padding: 17px; border: 1px solid #e7ebed; border-radius: 9px; background: white; }
+.step-icon { width: 34px; height: 34px; flex: 0 0 34px; display: grid; place-items: center; border-radius: 8px; color: var(--navy); background: var(--blue-soft); font-size: 17px; font-weight: 700; }
+.step-label { display: block; margin: 1px 0 5px; color: #8296a4; font-size: 8px; font-weight: 800; letter-spacing: 1px; }
+.step h3 { margin-bottom: 5px; color: #1e384b; font-family: var(--display); font-size: 13px; }
+.step p { max-width: 340px; margin: 0; color: var(--muted); font-size: 11px; line-height: 1.6; }
+.step p b { color: #3d5567; }
+.step-index { margin-left: auto; color: #e4eaee; font-family: var(--display); font-size: 15px; font-weight: 800; }
+
+/* Offre Premium avec un panneau contrasté et une liste de fonctionnalités. */
+.premium { padding-block: 68px; }
+.premium-panel { position: relative; display: grid; gap: 35px; overflow: hidden; padding: 30px 24px; border-radius: 13px; color: white; background: var(--navy-dark); }
+.premium-panel::after { position: absolute; top: -150px; right: -120px; width: 330px; height: 330px; border: 1px solid rgba(255,255,255,.08); border-radius: 50%; box-shadow: 0 0 0 38px rgba(255,255,255,.025), 0 0 0 78px rgba(255,255,255,.02); content: ''; }
+.premium-copy, .premium-list { position: relative; z-index: 1; }
+.eyebrow-light { color: #9ebcd0; }
+.sparkle { margin-right: 5px; color: #e0c58e; }
+.premium h2 { margin-bottom: 13px; font-size: clamp(29px, 7vw, 40px); line-height: 1.18; }
+.premium h2 span { color: #9dc7df; }
+.premium-copy > p:not(.eyebrow) { max-width: 430px; margin-bottom: 19px; color: #d0dce5; font-size: 13px; line-height: 1.7; }
+.button-whatsapp { min-height: 52px; width: 100%; max-width: 335px; padding: 0 14px; color: #123f37; background: #b8e3cc; font-size: 11px; box-shadow: 0 7px 18px rgba(0,0,0,.12); }
+.button-whatsapp:hover { background: #cef0dc; box-shadow: 0 9px 24px rgba(0,0,0,.17); }
+.button-whatsapp span:last-child { margin-left: auto; }
+.premium-note { display: block; margin-top: 10px; color: #b7c8d4; font-size: 10px; }
+.premium-list { display: grid; align-content: center; gap: 13px; padding: 19px; border: 1px solid rgba(255,255,255,.13); border-radius: 10px; background: rgba(255,255,255,.055); }
+.premium-list > div:not(.premium-stamp) { display: flex; align-items: center; gap: 10px; color: #e1eaf0; font-size: 12px; }
+.premium-list > div:not(.premium-stamp) span { width: 19px; height: 19px; display: grid; place-items: center; border-radius: 50%; color: #163f38; background: #a7d5bd; font-size: 11px; font-weight: 800; }
+.premium-stamp { display: none; }
+
+/* Présentation du développeur et signature de marque. */
+.about { padding-block: 60px; background: #f7f9fa; }
+.about-layout { display: grid; gap: 23px; align-items: center; }
+.about-mark { position: relative; width: 112px; height: 112px; display: grid; place-items: center; overflow: hidden; border-radius: 17px; color: white; background: var(--navy); box-shadow: 9px 9px 0 #dce7ed; }
+.about-mark span { z-index: 1; font-family: var(--display); font-size: 55px; font-weight: 800; font-style: italic; }
+.about-mark i { position: absolute; right: -11px; bottom: -19px; width: 50px; height: 91px; border: 2px solid rgba(255,255,255,.32); transform: skewX(-22deg); }
+.about-mark i:last-child { right: 9px; }
+.about h2 { margin-bottom: 12px; font-size: clamp(26px, 6vw, 35px); }
+.about-copy > p:last-child { max-width: 580px; margin: 0; color: var(--muted); font-size: 12px; line-height: 1.8; }
+.about-copy strong { color: var(--navy); }
+.about-quote { padding: 17px 19px; border-left: 2px solid #9bb9cb; background: white; }
+.about-quote > span { display: block; height: 24px; color: #9bb9cb; font-family: Georgia, serif; font-size: 36px; line-height: 1; }
+.about-quote p { margin: 4px 0 10px; color: var(--navy); font-family: var(--display); font-size: 14px; font-weight: 700; line-height: 1.5; }
+.about-quote small { color: #8697a2; font-size: 8px; font-weight: 800; letter-spacing: 1px; }
+
+/* Pied de page et notification temporaire des liens de téléchargement à renseigner. */
+.site-footer { min-height: 82px; padding-block: 17px; color: #c8d5de; background: var(--navy-deep); }
+.footer-inner { flex-wrap: wrap; gap: 13px; }
+.footer-brand .brand-mark { width: 29px; height: 29px; border: 1px solid rgba(255,255,255,.18); color: var(--navy-deep); background: #fff; font-size: 15px; }
+.footer-brand .brand-name { color: white; font-size: 14px; }
+.footer-inner > p { order: 3; width: 100%; margin: 0; color: #9fb1bf; font-size: 9px; }
+.footer-top { display: inline-flex; align-items: center; gap: 6px; color: #d6e1e8; font-size: 10px; text-decoration: none; }
+.footer-top span { font-size: 15px; }
+.toast { position: fixed; z-index: 30; right: 16px; bottom: 18px; left: 16px; max-width: 420px; margin-inline: auto; padding: 14px 17px; border: 1px solid rgba(255,255,255,.13); border-radius: 9px; color: white; background: #102b43; box-shadow: 0 10px 30px rgba(0,0,0,.22); font-size: 12px; line-height: 1.5; opacity: 0; pointer-events: none; transform: translateY(12px); transition: opacity .2s ease, transform .2s ease; }
+.toast.is-visible { opacity: 1; transform: translateY(0); }
+
+/* PREMIER BREAKPOINT : affiche la navigation et repartit les sections en colonnes. */
+@media (min-width: 700px) {
+  .main-nav { display: flex; }
+  .hero-layout { grid-template-columns: 1.15fr .85fr; gap: 20px; padding-block: 68px; }
+  .trust-items { grid-template-columns: 1fr auto 1fr auto 1fr; align-items: center; padding-block: 15px; }
+  .trust-divider { height: 21px; display: block; border-left: 1px solid #e4e9ed; }
+}
+
+/* Largeur de contenu, cartes, liste Premium et biographie sur tablette et ordinateur. */
+@media (min-width: 700px) {
+  .container { width: min(1120px, calc(100% - 64px)); }
+  .hero-visual { width: 100%; min-height: 390px; }
+  .tag-top { right: -6px; }
+  .tag-bottom { left: -9px; }
+  .benefit-grid { grid-template-columns: repeat(3, 1fr); gap: 17px; }
+  .benefit-card { min-height: 220px; padding: 24px; }
+  .install-layout { grid-template-columns: .85fr 1.15fr; gap: 70px; align-items: center; }
+  .premium-panel { grid-template-columns: 1.1fr .9fr; gap: 45px; align-items: center; padding: 47px; }
+  .premium-list { min-height: 221px; }
+  .premium-stamp { position: absolute; right: 14px; bottom: 8px; display: grid; width: 65px; height: 65px; align-content: center; justify-items: center; border: 1px solid rgba(255,255,255,.18); border-radius: 50%; color: rgba(255,255,255,.5); transform: rotate(-12deg); }
+  .premium-stamp span { font-family: var(--display); font-size: 14px; font-weight: 800; }
+  .premium-stamp small { font-size: 6px; letter-spacing: 1px; }
+  .about-layout { grid-template-columns: 112px 1fr 190px; gap: 32px; }
+  .footer-inner > p { order: initial; width: auto; }
+}
+
+/* GRAND ECRAN : augmente les espaces, la hauteur du hero et la taille de la maquette. */
+@media (min-width: 980px) {
+  .hero-layout { min-height: 575px; padding-block: 75px; }
+  .hero-visual { min-height: 420px; }
+  .app-card { width: 285px; padding: 19px; }
+  .section-pad { padding-block: 93px; }
+  .section-heading { margin-bottom: 42px; }
+  .benefit-card { min-height: 230px; padding: 27px; }
+  .benefit-card p { font-size: 13px; }
+  .premium { padding-block: 75px; }
+  .premium-panel { padding: 56px 60px; }
+}
+
+/* ACCESSIBILITE : neutralise les mouvements si l'utilisateur l'a demande dans son systeme. */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; }
+}
+
+/*
+ * FINITIONS DE LA CHARTE : ces variables et règles complètent/surchargent les styles de base ci-dessus.
+ * Pour changer l'ambiance générale, commencez par les couleurs de ce bloc : elles prennent le dessus.
+ */
+:root {
+  --navy: #183a55;
+  --navy-dark: #112d43;
+  --navy-deep: #0c2437;
+  --blue-soft: #eaf0f3;
+  --accent: #e8c47e;
+  --accent-dark: #8d6a32;
+  --ink: #1d2b34;
+  --muted: #64737b;
+  --line: #e8e8e3;
+  --paper: #fffefa;
+  --offwhite: #f5f4ef;
+}
+
+body { background: var(--paper); }
+.container { width: min(1160px, calc(100% - 40px)); }
+.site-header { height: 74px; }
+.brand-mark { border-radius: 9px; box-shadow: inset 0 0 0 1px rgba(255,255,255,.19), 0 4px 11px rgba(17,45,67,.12); }
+.brand-name { letter-spacing: -.7px; }
+.main-nav { gap: clamp(16px, 2.4vw, 32px); }
+.main-nav a { font-size: 11px; }
+.button { border-radius: 7px; }
+.button-outline { min-height: 42px; padding-inline: 18px; border-color: #d7dcd9; }
+
+/* HERO : fond, grille de mesure decorative et tailles de la promesse principale. */
+.hero {
+  background:
+    radial-gradient(ellipse at 82% 50%, rgba(86,128,151,.37), transparent 34%),
+    linear-gradient(118deg, #102d43 0%, #183a55 58%, #1b405b 100%);
+}
+.hero::before { opacity: .11; background-size: 56px 56px; }
+.hero-layout { min-height: 570px; padding-block: 70px; }
+.hero-copy { max-width: 570px; }
+.eyebrow { letter-spacing: 1.8px; }
+.hero h1 { max-width: 570px; margin-bottom: 20px; font-size: clamp(40px, 5.3vw, 64px); letter-spacing: -2.7px; line-height: 1.045; }
+.hero h1 > span:last-child { color: #e8c47e; }
+.hero-lead { max-width: 470px; margin-bottom: 25px; color: #d4dfe5; font-size: 15px; line-height: 1.8; }
+.hero-actions { max-width: 370px; gap: 9px; }
+.button-download { min-height: 61px; border-radius: 8px; }
+.button-download strong { font-size: 12px; }
+.button-download small { font-size: 10px; }
+.hero-proof { display: flex; flex-wrap: wrap; gap: 10px 19px; margin-top: 16px; }
+.hero-proof span { display: inline-flex; align-items: center; gap: 6px; color: #c5d5df; font-size: 10px; }
+.hero-proof i { width: 15px; height: 15px; display: grid; place-items: center; border: 1px solid rgba(232,196,126,.55); border-radius: 50%; color: var(--accent); font-size: 9px; font-style: normal; }
+
+/* Ajustements de taille du visuel d'accueil et de sa maquette d'application. */
+.hero-visual { width: min(100%, 430px); min-height: 430px; }
+.visual-glow { width: 360px; height: 360px; border-color: rgba(232,196,126,.19); box-shadow: 0 0 0 34px rgba(232,196,126,.035), 0 0 0 77px rgba(255,255,255,.025); }
+.app-card { width: min(290px, 77vw); padding: 20px; border: 1px solid rgba(255,255,255,.92); border-radius: 12px; box-shadow: 0 32px 80px rgba(3,17,28,.38); transform: rotate(1deg); }
+.visual-tag { padding: 11px 14px; border-radius: 6px; box-shadow: 0 12px 30px rgba(3,17,28,.22); font-size: 10px; }
+.tag-top { top: 45px; right: 3px; }
+.tag-bottom { bottom: 42px; left: 3px; }
+.visual-ruler { color: rgba(255,255,255,.7); }
+
+/* Repères métier discrets, puis une grille de cartes légère et respirante. */
+.trust-strip { background: #fffefa; }
+.trust-items { padding-block: 19px; }
+.trust-items > div { color: #50636d; font-size: 10px; letter-spacing: .1px; }
+.trust-icon { border-radius: 6px; color: var(--accent-dark); background: #f5f0e5; }
+.section-pad { padding-block: 88px; }
+.section-heading { margin-bottom: 40px; }
+.eyebrow-dark { color: #947a4c; }
+.section-heading h2, .install h2, .about h2, .faq h2 { color: var(--navy-dark); letter-spacing: -1.8px; }
+.section-heading h2 span, .install h2 span, .about h2 span, .faq h2 span { color: #a28758; }
+.section-heading > p:last-child { font-size: 13px; }
+.benefits { background: #fffefa; }
+.benefit-grid { gap: 16px; }
+.benefit-card { min-height: 220px; padding: 25px; border-radius: 8px; background: #fff; box-shadow: 0 7px 25px rgba(25,43,54,.035); }
+.benefit-card:hover { border-color: #d9c99f; box-shadow: 0 17px 38px rgba(25,43,54,.085); }
+.card-icon { width: 42px; height: 42px; border-radius: 8px; }
+.icon-blue { color: var(--navy); background: #eaf0f3; }
+.icon-sand { color: #92733f; background: #f6f0e4; }
+.icon-green { color: #477a67; background: #edf3ee; }
+.benefit-card h3 { font-size: 15px; }
+.benefit-card p { color: #68757b; font-size: 12px; line-height: 1.8; }
+.card-number { color: #f0eee7; font-size: 27px; }
+
+/* Couleurs et dimensions des cartes d'installation et du lien de téléchargement. */
+/* Installation mise en page comme un parcours guidé. */
+.install { background: #f4f3ee; }
+.step { min-height: 106px; border-color: #e8e6df; border-radius: 7px; box-shadow: 0 4px 14px rgba(25,43,54,.025); }
+.step-icon { border-radius: 7px; color: var(--accent-dark); background: #f5f0e5; }
+.step-label { color: #987e50; }
+.step h3 { font-size: 13px; }
+.step p { font-size: 11px; line-height: 1.7; }
+.text-link { font-size: 11px; }
+
+/* Offre premium et bio : mêmes accents, mais contrastes mieux maîtrisés. */
+.premium-panel { border-radius: 9px; background: linear-gradient(120deg, #112e44, #1a405b); box-shadow: 0 20px 55px rgba(17,45,67,.12); }
+.premium-panel::after { border-color: rgba(232,196,126,.12); }
+.premium h2 { letter-spacing: -1.8px; }
+.premium h2 span { color: var(--accent); }
+.button-whatsapp { border-radius: 7px; }
+.premium-list { border-radius: 7px; background: rgba(255,255,255,.045); }
+.premium-list > div:not(.premium-stamp) span { color: #123a35; background: #c7dfcc; }
+.about { background: #f7f6f1; }
+.about-mark { border-radius: 10px; background: linear-gradient(145deg, #183a55, #315c75); box-shadow: 8px 8px 0 #e7e1d3; }
+.about-quote { border-left-color: var(--accent); background: rgba(255,255,255,.78); }
+.about-quote > span { color: #b49b69; }
+.about-copy > p:last-child { line-height: 1.9; }
+
+/* FAQ native et accessible : ouverture sans JavaScript ni dépendance externe. */
+.faq { background: #fffefa; }
+.faq-layout { display: grid; gap: 30px; }
+.faq-intro { max-width: 400px; }
+.faq h2 { margin-bottom: 13px; font-size: clamp(29px, 6vw, 39px); line-height: 1.2; }
+.faq-intro > p:not(.eyebrow) { margin-bottom: 18px; color: var(--muted); font-size: 13px; line-height: 1.75; }
+.faq-list { border-top: 1px solid var(--line); }
+.faq-item { border-bottom: 1px solid var(--line); }
+.faq-item summary { position: relative; min-height: 63px; display: flex; align-items: center; justify-content: space-between; gap: 15px; padding: 16px 3px; color: #253b49; cursor: pointer; font-family: var(--display); font-size: 12px; font-weight: 700; list-style: none; }
+.faq-item summary::-webkit-details-marker { display: none; }
+.faq-item summary > span { position: relative; width: 21px; height: 21px; flex: 0 0 21px; border: 1px solid #e1d7c1; border-radius: 50%; }
+.faq-item summary > span::before, .faq-item summary > span::after { position: absolute; top: 9px; left: 6px; width: 7px; height: 1px; background: var(--accent-dark); content: ''; transition: transform .2s ease; }
+.faq-item summary > span::after { transform: rotate(90deg); }
+.faq-item[open] summary > span::after { transform: rotate(0); }
+.faq-item > p { max-width: 590px; margin: -2px 35px 18px 3px; color: var(--muted); font-size: 12px; line-height: 1.8; }
+.faq-item[open] summary { color: var(--navy); }
+
+/* Bas de page soigné et appel mobile disponible après le premier écran. */
+.site-footer { background: #0c2437; }
+.footer-inner > p { letter-spacing: .1px; }
+.mobile-download-cta { position: fixed; z-index: 18; right: 13px; bottom: 13px; left: 13px; display: flex; min-height: 50px; align-items: center; justify-content: center; gap: 9px; border: 1px solid rgba(255,255,255,.45); border-radius: 7px; color: #172f42; background: var(--accent); box-shadow: 0 8px 28px rgba(10,32,49,.24); font-size: 12px; font-weight: 800; text-decoration: none; opacity: 0; pointer-events: none; transform: translateY(12px); transition: opacity .22s ease, transform .22s ease; }
+.mobile-download-cta.is-visible { opacity: 1; pointer-events: auto; transform: translateY(0); }
+.mobile-download-cta > span { font-size: 17px; }
+
+/* Mise en page FAQ a deux colonnes lorsque l'espace horizontal le permet. */
+@media (min-width: 700px) {
+  .container { width: min(1160px, calc(100% - 64px)); }
+  .hero-layout { grid-template-columns: 1.08fr .92fr; gap: 25px; }
+  .trust-items { padding-block: 17px; }
+  .faq-layout { grid-template-columns: .8fr 1.2fr; gap: 70px; align-items: start; }
+  .mobile-download-cta { display: none; }
+}
+
+/* Valeurs de finition pour les ecrans larges, appliquees apres les regles de base. */
+@media (min-width: 980px) {
+  .site-header { height: 78px; }
+  .hero-layout { min-height: 625px; padding-block: 82px; }
+  .hero-visual { min-height: 465px; }
+  .app-card { width: 306px; padding: 22px; }
+  .section-pad { padding-block: 100px; }
+  .premium-panel { padding: 58px 64px; }
+}
+
+/* Ajustements mobile : navigation masquee, hero empile et place pour le dock flottant. */
+@media (max-width: 699px) {
+  .main-nav { display: none; }
+  .hero-layout { gap: 15px; padding-block: 48px 37px; }
+  .hero-copy { max-width: 520px; }
+  .hero h1 { font-size: clamp(38px, 10.2vw, 52px); }
+  .hero-lead { font-size: 13px; line-height: 1.75; }
+  .hero-visual { min-height: 340px; }
+  .visual-glow { width: 270px; height: 270px; }
+  .tag-top { top: 26px; }
+  .tag-bottom { bottom: 26px; }
+  .trust-items { gap: 10px; }
+  .section-pad { padding-block: 68px; }
+  .faq-layout { gap: 25px; }
+  .site-footer { padding-bottom: 74px; }
+}
+
+/* Les transitions decoratives sont desactivees si l'utilisateur limite les animations. */
+@media (prefers-reduced-motion: reduce) {
+  .mobile-download-cta, .faq-item summary > span::before, .faq-item summary > span::after { transition: none; }
+}
+
+/*
+ * MINI-INTERFACE METIER : habillage des onglets, formulaires, résultat de surface,
+ * choix du vitrage et aperçu du devis. Les règles ne sont que visuelles.
+ */
+.hero-visual { width: min(100%, 470px); min-height: 490px; }
+.demo-app {
+  width: min(100%, 348px);
+  padding: 18px;
+  border-color: rgba(255,255,255,.92);
+  border-radius: 14px;
+  transform: none;
+}
+.app-topbar { padding-bottom: 13px; }
+.app-status { display: inline-flex; align-items: center; gap: 5px; margin-left: auto; color: #78878e; font-size: 7px; font-weight: 800; letter-spacing: .8px; }
+.app-status i { width: 6px; height: 6px; border-radius: 50%; background: #5da17d; box-shadow: 0 0 0 3px #e6f3eb; }
+.demo-title-row { display: flex; align-items: end; justify-content: space-between; padding: 15px 1px 12px; }
+.demo-kicker { display: block; color: #8b9696; font-size: 7px; font-weight: 800; letter-spacing: 1px; }
+.demo-title-row h2 { margin: 4px 0 0; color: #1d3443; font-family: var(--display); font-size: 16px; font-weight: 800; letter-spacing: -.5px; }
+.demo-project { padding: 5px 7px; border-radius: 4px; color: #8a7147; background: #f7f1e4; font-size: 8px; font-weight: 800; }
+.demo-tabs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 3px; padding: 4px; border-radius: 7px; background: #f1f3f2; }
+.demo-tab { min-height: 29px; border: 0; border-radius: 5px; color: #738087; background: transparent; cursor: pointer; font-family: var(--font); font-size: 9px; font-weight: 700; transition: background .2s ease, color .2s ease, box-shadow .2s ease; }
+.demo-tab:hover { color: var(--navy); }
+.demo-tab.is-active { color: var(--navy); background: white; box-shadow: 0 2px 6px rgba(20,46,61,.1); }
+.demo-panel { padding-top: 12px; animation: panel-in .24s ease both; }
+.demo-panel[hidden] { display: none; }
+.demo-profile-row { display: flex; align-items: center; gap: 9px; padding: 9px; border: 1px solid #e8ecea; border-radius: 7px; background: #fcfcfa; }
+.demo-profile-row .profile-shape { flex: 0 0 25px; margin: 0; }
+.demo-profile-row label { display: grid; gap: 3px; color: #899294; font-size: 7px; letter-spacing: .7px; }
+.demo-profile-row select { max-width: 175px; padding: 0 17px 0 0; border: 0; outline: 0; color: #253e50; background: transparent; font-family: var(--font); font-size: 10px; font-weight: 700; }
+.demo-profile-row .check-mark { flex: 0 0 17px; }
+.dimension-form { display: grid; grid-template-columns: 1fr 15px 1fr; gap: 7px; align-items: end; padding-top: 11px; }
+.dimension-form label { display: grid; grid-template-columns: 1fr auto; gap: 5px 2px; color: #77868d; font-size: 8px; font-weight: 600; }
+.dimension-form label > span { color: #a0aaad; }
+.dimension-form input { width: 100%; min-width: 0; grid-column: 1 / -1; padding: 9px 8px; border: 1px solid #e5e9e6; border-radius: 5px; outline: 0; color: #263d4c; background: white; font-family: var(--font); font-size: 12px; font-weight: 800; transition: border-color .2s ease, box-shadow .2s ease; }
+.dimension-form input:focus { border-color: #b69b68; box-shadow: 0 0 0 3px rgba(232,196,126,.19); }
+.dimension-cross { align-self: center; padding-top: 16px; color: #a3adb0; text-align: center; font-size: 12px; }
+.demo-calculate { min-height: 34px; display: flex; grid-column: 1 / -1; align-items: center; justify-content: center; gap: 7px; margin-top: 3px; border: 0; border-radius: 5px; color: white; background: var(--navy); cursor: pointer; font-family: var(--font); font-size: 9px; font-weight: 700; transition: transform .18s ease, background .18s ease, box-shadow .18s ease; }
+.demo-calculate:hover { transform: translateY(-1px); background: #244e6c; box-shadow: 0 4px 10px rgba(17,45,67,.16); }
+.demo-calculate:active { transform: translateY(0); }
+.demo-result { display: flex; align-items: center; justify-content: space-between; margin-top: 10px; padding: 9px 10px; border: 1px solid #e1ece4; border-radius: 6px; background: #f1f7f1; }
+.demo-result > div > span, .demo-result strong { display: block; }
+.demo-result > div > span { color: #6e8979; font-size: 8px; }
+.demo-result strong { margin-top: 2px; color: #34775a; font-family: var(--display); font-size: 15px; }
+.demo-result strong small { font-size: 9px; }
+.result-check { width: 18px; height: 18px; display: grid; place-items: center; border-radius: 50%; color: white; background: #5a9a77; font-size: 10px; }
+.demo-disclaimer { margin: 8px 0 0; color: #9aa2a2; font-size: 7px; text-align: center; }
+
+/* Schéma de fenêtre et commande de choix du vitrage pour rendre le panneau tangible. */
+.glass-preview-layout { min-height: 145px; display: grid; grid-template-columns: 1.05fr .95fr; gap: 12px; align-items: center; padding: 5px 7px 10px; }
+.glass-window { position: relative; width: 100%; height: 130px; display: grid; grid-template-columns: 1fr 1fr; gap: 5px; padding: 9px; overflow: hidden; border: 5px solid #c5d0d1; border-radius: 4px; background: linear-gradient(145deg, #eaf5f3, #cae0e0 52%, #f8f2df); box-shadow: inset 0 0 0 1px white, 3px 4px 0 #e8ece9; }
+.glass-window::before { position: absolute; top: 0; right: 0; width: 60%; height: 100%; background: linear-gradient(118deg, transparent 32%, rgba(255,255,255,.67) 33%, rgba(255,255,255,.19) 47%, transparent 48%); content: ''; pointer-events: none; }
+.glass-pane { position: relative; border: 2px solid rgba(81,123,136,.46); background: linear-gradient(140deg, rgba(220,244,241,.55), rgba(151,192,199,.2)); }
+.glass-pane span { position: absolute; right: 5px; bottom: 4px; color: rgba(54,91,105,.55); font-size: 7px; font-weight: 800; }
+.glass-crossbar { position: absolute; top: 50%; right: 5px; left: 5px; border-top: 3px solid #b6c4c6; }
+.glass-options { display: grid; gap: 5px; }
+.glass-options .demo-kicker { margin-bottom: 2px; }
+.glass-option { display: flex; min-height: 27px; align-items: center; justify-content: space-between; padding: 0 7px; border: 1px solid #e7eae6; border-radius: 4px; color: #64737b; background: #fff; cursor: pointer; text-align: left; font-family: var(--font); font-size: 8px; transition: border-color .18s ease, background .18s ease, color .18s ease; }
+.glass-option span { color: transparent; }
+.glass-option.is-selected { border-color: #d3bd8f; color: #705931; background: #fbf7ed; }
+.glass-option.is-selected span { color: #9b7941; }
+.glass-summary { display: flex; align-items: center; justify-content: space-between; padding: 9px 10px; border: 1px solid #e8ece9; border-radius: 5px; color: #718087; background: #fafbf9; font-size: 8px; }
+.glass-type-result { color: #2e596a; font-size: 9px; font-weight: 800; }
+
+/* Devis décoratif explicitement signalé comme aperçu, jamais présenté comme un vrai document. */
+.quote-preview { padding: 11px; border: 1px solid #e8e9e3; border-radius: 7px; background: linear-gradient(150deg, #fff, #fcfbf7); }
+.quote-heading { display: flex; align-items: center; gap: 7px; padding-bottom: 10px; border-bottom: 1px solid #ecece7; }
+.quote-logo { width: 25px; height: 25px; display: grid; place-items: center; border-radius: 6px; color: white; background: var(--navy); font-family: var(--display); font-size: 13px; font-style: italic; font-weight: 800; }
+.quote-heading b, .quote-heading small { display: block; }
+.quote-heading b { color: #304958; font-size: 8px; letter-spacing: .6px; }
+.quote-heading small { margin-top: 2px; color: #a0a5a1; font-size: 6px; letter-spacing: .5px; }
+.quote-file { margin-left: auto; padding: 4px 5px; border: 1px solid #eadbd2; border-radius: 3px; color: #a46c58; font-size: 7px; font-weight: 800; }
+.quote-client { display: grid; gap: 3px; padding: 9px 0 7px; }
+.quote-client span { color: #9b9f9b; font-size: 6px; font-weight: 800; letter-spacing: .8px; }
+.quote-client b { color: #40545d; font-size: 8px; }
+.quote-line { display: flex; justify-content: space-between; gap: 8px; padding: 7px 0; border-top: 1px solid #f0f0ec; color: #748087; font-size: 7px; }
+.quote-line b { color: #485c64; font-size: 7px; text-align: right; }
+.quote-action { width: 100%; min-height: 30px; margin-top: 8px; }
+.quote-feedback { margin: 6px 0 0; color: #819087; font-size: 7px; text-align: center; }
+
+/* Animations décoratives, apparitions au défilement et respect du réglage de mouvement réduit. */
+.glass-sparkle { position: absolute; z-index: 2; color: rgba(242,218,162,.88); text-shadow: 0 0 15px rgba(242,218,162,.5); animation: sparkle-drift 4s ease-in-out infinite; }
+.sparkle-one { top: 18%; left: 9%; font-size: 15px; }
+.sparkle-two { right: 11%; bottom: 18%; animation-delay: -1.7s; font-size: 20px; }
+.glass-window::after { position: absolute; top: -50%; bottom: -50%; left: -85%; width: 36%; background: linear-gradient(90deg, transparent, rgba(255,255,255,.65), transparent); content: ''; transform: rotate(17deg); animation: glass-shine 6s ease-in-out infinite; }
+[data-reveal] { opacity: 0; transform: translateY(20px); transition: opacity .65s ease, transform .65s cubic-bezier(.2,.7,.25,1); }
+[data-reveal].is-visible { opacity: 1; transform: translateY(0); }
+.benefit-card:nth-child(2) { transition-delay: .08s; }
+.benefit-card:nth-child(3) { transition-delay: .16s; }
+.step:nth-child(2) { transition-delay: .08s; }
+.step:nth-child(3) { transition-delay: .16s; }
+@keyframes app-float { 0%, 100% { transform: translateY(0) rotate(0); } 50% { transform: translateY(-8px) rotate(.6deg); } }
+@keyframes sparkle-drift { 0%, 100% { opacity: .5; transform: translate3d(0,0,0) rotate(0); } 50% { opacity: 1; transform: translate3d(4px,-9px,0) rotate(18deg); } }
+@keyframes glass-shine { 0%, 65% { left: -85%; } 85%, 100% { left: 145%; } }
+@keyframes panel-in { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
+
+/* La maquette prend plus de hauteur sur telephone et garde ses decorations dans le cadre. */
+@media (max-width: 699px) {
+  .hero-visual { min-height: 440px; }
+  .demo-app { width: min(100%, 348px); }
+  .sparkle-one { left: 0; }
+  .sparkle-two { right: 0; }
+}
+
+/* Reflets et scintillements sont decoratifs : ils s'arretent en mode mouvement reduit. */
+@media (prefers-reduced-motion: reduce) {
+  .glass-sparkle, .glass-window::after { animation: none; }
+  [data-reveal] { opacity: 1; transform: none; transition: none; }
+}
+
+/* Images de marque : chemins des fichiers définis dans index.html, dimensions sans déformation. */
+.brand-logo { display: block; width: 58px; height: 38px; object-fit: contain; }
+.brand-name { margin-left: -5px; color: var(--navy); font-size: 15px; }
+.footer-brand .brand-logo { width: 53px; height: 34px; }
+.footer-brand .brand-name { color: #fff; }
+.app-brand-logo { width: 48px; height: 31px; object-fit: contain; }
+.app-brand-caption { display: grid; gap: 2px; }
+.app-brand-caption b { color: #304958; font-size: 8px; letter-spacing: .9px; }
+.app-brand-caption small { color: #8b9696; font-size: 6px; letter-spacing: 1.1px; }
+.quote-logo { width: 31px; height: 23px; flex: 0 0 31px; object-fit: contain; }
+.about-mark { background: linear-gradient(145deg, #fff, #f7f5ef); }
+.about-mark > img { position: relative; z-index: 1; width: 88px; height: 62px; object-fit: contain; }
+.about-mark i { border-color: rgba(24,58,85,.12); }
+.about-mark i:last-child { right: 9px; }
+
+/* Tres petits telephones : reduit le logo pour eviter de comprimer l'en-tete. */
+@media (max-width: 420px) {
+  .brand-logo { width: 52px; height: 35px; }
+  .brand-name { margin-left: -7px; font-size: 13px; }
+}
+
+/* Barre flottante avec deux liens : Android et Windows. Ajustez l'espacement dans les media queries. */
+.download-dock.mobile-download-cta {
+  position: fixed;
+  z-index: 18;
+  right: max(18px, env(safe-area-inset-right));
+  bottom: max(18px, env(safe-area-inset-bottom));
+  left: auto;
+  display: grid;
+  width: min(390px, calc(100vw - 36px));
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  padding: 8px;
+  border: 1px solid rgba(255,255,255,.72);
+  border-radius: 12px;
+  background: rgba(255,254,250,.94);
+  box-shadow: 0 12px 38px rgba(10,32,49,.24);
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(14px);
+  transition: opacity .24s ease, transform .24s ease;
+  backdrop-filter: blur(14px);
+}
+.download-dock.mobile-download-cta.is-visible { opacity: 1; pointer-events: auto; transform: translateY(0); }
+.download-dock-link {
+  min-width: 0;
+  min-height: 52px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 10px;
+  border: 1px solid #e8e5db;
+  border-radius: 8px;
+  color: #233b4b;
+  background: #fffefa;
+  text-decoration: none;
+  transition: transform .18s ease, box-shadow .18s ease, background .18s ease;
+}
+.download-dock-link:hover { transform: translateY(-2px); box-shadow: 0 5px 13px rgba(17,45,67,.12); }
+.download-dock-android { border-color: #e8c47e; background: #f4dfb2; }
+.dock-icon { width: 32px; height: 32px; flex: 0 0 32px; display: grid; place-items: center; border-radius: 7px; color: white; background: var(--navy); font-size: 19px; }
+.dock-windows-icon { color: var(--navy); background: #eaf0f3; font-size: 18px; }
+.download-dock-link strong, .download-dock-link small { display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.download-dock-link strong { font-size: 11px; }
+.download-dock-link small { margin-top: 2px; color: #6e7c82; font-size: 8px; }
+
+/* Positionne le dock flottant en bas a droite sur tablette et ordinateur. */
+@media (min-width: 700px) {
+  .download-dock.mobile-download-cta { right: 24px; bottom: 24px; left: auto; width: 390px; }
+}
+
+/* Sur mobile, elargit la barre et conserve deux zones faciles a toucher. */
+@media (max-width: 699px) {
+  .download-dock.mobile-download-cta {
+    right: max(10px, env(safe-area-inset-right));
+    bottom: max(10px, env(safe-area-inset-bottom));
+    left: max(10px, env(safe-area-inset-left));
+    width: auto;
+    gap: 6px;
+    padding: 6px;
+    border-radius: 10px;
+  }
+  .download-dock-link { min-height: 50px; gap: 7px; padding: 6px 8px; }
+  .dock-icon { width: 29px; height: 29px; flex-basis: 29px; }
+  .download-dock-link strong { font-size: 10px; }
+  .download-dock-link small { font-size: 8px; }
+}
+
+/* Accessibilite du dock : pas de transition si la reduction des mouvements est activee. */
+@media (prefers-reduced-motion: reduce) {
+  .download-dock.mobile-download-cta, .download-dock-link { transition: none; }
+}

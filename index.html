@@ -1,0 +1,302 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <!-- CONFIGURATION SEO : adaptez description, mots-clés et titre à votre présentation commerciale. -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#1b4264">
+  <meta name="description" content="Taodaluminium aide les vitriers à calculer leurs débits aluminium, optimiser leurs vitrages et créer des devis professionnels. Téléchargez l'application Android et Windows.">
+  <meta name="keywords" content="calcul aluminium vitrier, logiciel menuiserie aluminium gratuit, application devis vitrerie, coupage aluminium libanais, Alpha Oumar Diallo Taodaluminium">
+  <title>Taodaluminium — L'application des vitriers pros</title>
+  <!-- LOGO / FAVICON : conservez logo.png à côté de index.html, ou remplacez ce chemin partout ci-dessous. -->
+  <link rel="icon" type="image/png" href="logo.png">
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <!-- En-tête fixe : identité visuelle et accès rapide au contact WhatsApp. -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <!-- LOGO : remplacez le chemin de l'image si vous renommez ou déplacez logo.png. -->
+      <a class="brand" href="#accueil" aria-label="Taodaluminium, accueil">
+        <img class="brand-logo" src="logo.png" alt="">
+        <span class="brand-name">aluminium</span>
+      </a>
+      <nav class="main-nav" aria-label="Navigation principale">
+        <a href="#avantages">Avantages</a>
+        <a href="#installation">Installation</a>
+        <a href="#premium">Premium</a>
+        <a href="#questions">Questions</a>
+      </nav>
+      <!-- WHATSAPP : remplacez 224620780868 par votre numéro international sans + ni espaces. -->
+      <a class="button button-outline header-contact" href="https://wa.me/224620780868?text=Bonjour%2C%20je%20souhaite%20en%20savoir%20plus%20sur%20Taodaluminium." target="_blank" rel="noopener noreferrer">Parlons-en <span aria-hidden="true">↗</span></a>
+    </div>
+  </header>
+
+  <main>
+    <!-- ACCUEIL : modifiez le titre et le texte de présentation ci-dessous pour votre message de marque. -->
+    <section class="hero" id="accueil">
+      <div class="container hero-layout">
+        <div class="hero-copy">
+          <p class="eyebrow"><span class="eyebrow-dot"></span> L'atelier du vitrier, version numérique</p>
+          <h1>Votre métier.<br>Vos mesures.<br><span>Tout est plus simple.</span></h1>
+          <p class="hero-lead">Du calcul de débit au devis client, Taodaluminium vous accompagne sur le terrain. Un outil pratique, imaginé par un vitrier qui connaît votre quotidien.</p>
+          <!-- TELECHARGEMENTS HERO : déposez les fichiers aux chemins indiqués, ou remplacez href par leurs URL directes. -->
+          <div class="hero-actions" id="telechargements">
+            <a class="button button-download" href="downloads/taodaluminium.apk" download="taodaluminium.apk" data-download aria-label="Télécharger Taodaluminium pour Android, fichier APK">
+              <span class="button-icon" aria-hidden="true">↓</span>
+              <span><strong>Télécharger pour Android</strong><small>Fichier APK · Gratuit</small></span>
+              <span class="button-arrow" aria-hidden="true">↗</span>
+            </a>
+            <a class="button button-download button-download-secondary" href="downloads/taodaluminium-windows.exe" download="taodaluminium-windows.exe" data-download aria-label="Télécharger Taodaluminium pour Windows">
+              <span class="button-icon windows-icon" aria-hidden="true">⊞</span>
+              <span><strong>Télécharger pour Windows</strong><small>Version ordinateur</small></span>
+              <span class="button-arrow" aria-hidden="true">↗</span>
+            </a>
+          </div>
+          <div class="hero-proof"><span><i aria-hidden="true">✓</i> Pensée pour le terrain</span><span><i aria-hidden="true">✓</i> Android &amp; Windows</span></div>
+        </div>
+
+        <!-- APERCU INTERACTIF FICTIF : la surface est une aire simple, sans retraits, séries ou règles réelles de débit. -->
+        <!-- Pour adapter la démonstration, modifiez les séries, valeurs d'exemple et options du vitrage ci-dessous. -->
+        <div class="hero-visual" aria-label="Aperçu interactif d'un calcul de vitrerie">
+          <div class="visual-glow"></div>
+          <div class="app-card demo-app">
+            <div class="app-topbar">
+              <img class="app-brand-logo" src="logo.png" alt="Taod Aluminium">
+              <span class="app-brand-caption"><b>ESPACE</b><small>VITRERIE</small></span>
+              <span class="app-status"><i></i> EN LIGNE</span>
+            </div>
+            <div class="demo-title-row">
+              <div><span class="demo-kicker">ESPACE ATELIER</span><h2>Mon chantier</h2></div>
+              <span class="demo-project">N° 024</span>
+            </div>
+            <div class="demo-tabs" role="tablist" aria-label="Aperçu des outils métier">
+              <button class="demo-tab is-active" id="tab-debit" type="button" role="tab" aria-selected="true" aria-controls="panel-debit" data-demo-tab="debit">Débit</button>
+              <button class="demo-tab" id="tab-vitrage" type="button" role="tab" aria-selected="false" aria-controls="panel-vitrage" data-demo-tab="vitrage">Vitrage</button>
+              <button class="demo-tab" id="tab-devis" type="button" role="tab" aria-selected="false" aria-controls="panel-devis" data-demo-tab="devis">Devis</button>
+            </div>
+
+            <section class="demo-panel is-active" id="panel-debit" role="tabpanel" aria-labelledby="tab-debit" data-demo-panel="debit">
+              <div class="demo-profile-row">
+                <span class="profile-shape" aria-hidden="true"><i></i><i></i><i></i></span>
+                <label for="profile-series"><small>SÉRIE ALUMINIUM</small>
+                  <select id="profile-series">
+                    <option>Alu 82</option>
+                    <option>Libanais</option>
+                    <option>Technal</option>
+                  </select>
+                </label>
+                <span class="check-mark" aria-hidden="true">✓</span>
+              </div>
+              <form class="dimension-form" id="dimension-form">
+                <label>Largeur <span>cm</span><input id="dimension-width" type="number" min="1" max="10000" step="1" value="120" inputmode="numeric" required></label>
+                <span class="dimension-cross" aria-hidden="true">×</span>
+                <label>Hauteur <span>cm</span><input id="dimension-height" type="number" min="1" max="10000" step="1" value="140" inputmode="numeric" required></label>
+                <button class="demo-calculate" type="submit"><span aria-hidden="true">⌁</span> Voir la surface</button>
+              </form>
+              <div class="demo-result" aria-live="polite">
+                <div><span>Surface indicative</span><strong id="surface-result">1,68 <small>m²</small></strong></div>
+                <span class="result-check" aria-hidden="true">✓</span>
+              </div>
+              <p class="demo-disclaimer">Aperçu de démonstration · hors retraits de coupe</p>
+            </section>
+
+            <section class="demo-panel" id="panel-vitrage" role="tabpanel" aria-labelledby="tab-vitrage" data-demo-panel="vitrage" hidden>
+              <div class="glass-preview-layout">
+                <div class="glass-window" aria-label="Schéma décoratif d'un vitrage à deux vantaux">
+                  <div class="glass-pane"><span>01</span></div><div class="glass-pane"><span>02</span></div>
+                  <span class="glass-crossbar"></span>
+                </div>
+                <div class="glass-options">
+                  <span class="demo-kicker">TYPE DE VERRE</span>
+                  <button type="button" class="glass-option is-selected" aria-pressed="true">Clair <span>✓</span></button>
+                  <button type="button" class="glass-option" aria-pressed="false">Teinté <span>✓</span></button>
+                  <button type="button" class="glass-option" aria-pressed="false">Feuilleté <span>✓</span></button>
+                </div>
+              </div>
+              <div class="glass-summary"><span>Votre vitrage, visualisé.</span><span class="glass-type-result">Verre clair</span></div>
+              <p class="demo-disclaimer">Aperçu illustratif des options de vitrage</p>
+            </section>
+
+            <section class="demo-panel" id="panel-devis" role="tabpanel" aria-labelledby="tab-devis" data-demo-panel="devis" hidden>
+              <div class="quote-preview">
+                <div class="quote-heading"><img class="quote-logo" src="logo.png" alt=""><span><b>DEVIS VITRERIE</b><small>APERÇU DE PRÉSENTATION</small></span><span class="quote-file">PDF</span></div>
+                <div class="quote-client"><span>CLIENT</span><b>Votre prochain chantier</b></div>
+                <div class="quote-line"><span>Menuiserie aluminium</span><b>Dimensions au choix</b></div>
+                <div class="quote-line"><span>Vitrage personnalisé</span><b>Selon votre sélection</b></div>
+                <button type="button" class="demo-calculate quote-action" id="quote-action">Préparer un devis <span aria-hidden="true">→</span></button>
+                <p class="quote-feedback" id="quote-feedback" aria-live="polite">Un aperçu à personnaliser dans l'application.</p>
+              </div>
+              <p class="demo-disclaimer">Exemple visuel · aucun prix ni document réel</p>
+            </section>
+          </div>
+          <div class="visual-tag tag-top"><span aria-hidden="true">✦</span> Le geste métier, simplifié</div>
+          <div class="visual-tag tag-bottom"><span aria-hidden="true">✓</span> Conçu pour les vitriers</div>
+          <div class="glass-sparkle sparkle-one" aria-hidden="true">✦</div>
+          <div class="glass-sparkle sparkle-two" aria-hidden="true">✧</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- AVANTAGES : personnalisez les fonctionnalités selon les capacités réelles de votre application. -->
+    <section class="trust-strip" aria-label="Conçu pour le métier de vitrier">
+      <div class="container trust-items">
+        <div><span class="trust-icon" aria-hidden="true">⌖</span><span>Calculs de débit spécialisés</span></div>
+        <span class="trust-divider" aria-hidden="true"></span>
+        <div><span class="trust-icon" aria-hidden="true">▤</span><span>Devis prêts pour vos clients</span></div>
+        <span class="trust-divider" aria-hidden="true"></span>
+        <div><span class="trust-icon" aria-hidden="true">◇</span><span>Conçue par un vitrier</span></div>
+      </div>
+    </section>
+
+    <!-- Bénéfices principaux de l'application présentés sous forme de cartes. -->
+    <section class="benefits section-pad" id="avantages">
+      <div class="container">
+        <div class="section-heading">
+          <p class="eyebrow eyebrow-dark">UN VRAI GAIN AU QUOTIDIEN</p>
+          <h2>Tout le métier du vitrier,<br><span>dans votre poche.</span></h2>
+          <p>Moins de calculs, moins de pertes et des clients mieux servis.</p>
+        </div>
+        <div class="benefit-grid">
+          <article class="benefit-card" data-reveal>
+            <div class="card-icon icon-blue" aria-hidden="true">⌖</div>
+            <h3>Précision totale</h3>
+            <p>Fini les erreurs de coupe. L'app gère les séries Libanais, Alu 82, Technal et plus.</p>
+            <span class="card-number">01</span>
+          </article>
+          <article class="benefit-card" data-reveal>
+            <div class="card-icon icon-sand" aria-hidden="true">▤</div>
+            <h3>Devis PDF pro</h3>
+            <p>Générez vos devis avec votre logo et votre signature, directement sur le chantier.</p>
+            <span class="card-number">02</span>
+          </article>
+          <article class="benefit-card" data-reveal>
+            <div class="card-icon icon-green" aria-hidden="true">◇</div>
+            <h3>Optimisation du verre</h3>
+            <p>Calculez vos surfaces et le nombre de feuilles de verre nécessaires sans gaspillage.</p>
+            <span class="card-number">03</span>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- INSTALLATION : ajustez ces étapes si votre méthode de distribution APK change. -->
+    <section class="install section-pad" id="installation">
+      <div class="container install-layout">
+        <div class="install-intro" data-reveal>
+          <p class="eyebrow eyebrow-dark">PRENEZ EN MAIN L'APP</p>
+          <h2>Installation rapide,<br><span>zéro prise de tête.</span></h2>
+          <p>Installez l'APK Android en quelques gestes et commencez à travailler.</p>
+          <a class="text-link" href="#telechargements">Télécharger l'application <span aria-hidden="true">→</span></a>
+        </div>
+        <ol class="steps">
+          <li class="step" data-reveal>
+            <span class="step-icon" aria-hidden="true">↓</span>
+            <div><span class="step-label">ÉTAPE 01</span><h3>Téléchargez l'APK</h3><p>Appuyez sur le bouton Android pour récupérer le fichier d'installation.</p></div>
+            <span class="step-index">01</span>
+          </li>
+          <li class="step" data-reveal>
+            <span class="step-icon" aria-hidden="true">▣</span>
+            <div><span class="step-label">ÉTAPE 02</span><h3>Ouvrez le fichier</h3><p>Retrouvez <b>taodaluminium.apk</b> dans vos téléchargements, puis ouvrez-le.</p></div>
+            <span class="step-index">02</span>
+          </li>
+          <li class="step" data-reveal>
+            <span class="step-icon" aria-hidden="true">✓</span>
+            <div><span class="step-label">ÉTAPE 03</span><h3>Confirmez l'installation</h3><p>Si Android affiche une alerte, appuyez sur « Installer quand même ».</p></div>
+            <span class="step-index">03</span>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- PREMIUM : modifiez les fonctionnalités et le message pour refléter votre offre réelle. -->
+    <section class="premium section-pad" id="premium">
+      <div class="container">
+        <div class="premium-panel" data-reveal>
+          <div class="premium-copy">
+            <p class="eyebrow eyebrow-light"><span class="sparkle" aria-hidden="true">✦</span> PASSEZ À LA VITESSE SUPÉRIEURE</p>
+            <h2>Votre savoir-faire.<br><span>En version premium.</span></h2>
+            <p>Débloquez tout votre potentiel : logo personnalisé, signature, gestion de stock et support prioritaire.</p>
+            <!-- WHATSAPP PREMIUM : utilisez le même numéro international que celui du bouton Contact. -->
+            <a class="button button-whatsapp" href="https://wa.me/224620780868" target="_blank" rel="noopener noreferrer"><span aria-hidden="true">◉</span> Activer mon Pack via WhatsApp <span aria-hidden="true">↗</span></a>
+            <small class="premium-note">Les fonctions de base restent gratuites.</small>
+          </div>
+          <div class="premium-list" aria-label="Fonctionnalités Premium">
+            <div><span aria-hidden="true">✓</span> Votre logo sur chaque devis</div>
+            <div><span aria-hidden="true">✓</span> Signature professionnelle</div>
+            <div><span aria-hidden="true">✓</span> Gestion de votre stock</div>
+            <div><span aria-hidden="true">✓</span> Support prioritaire</div>
+            <div class="premium-stamp"><span>TAOD</span><small>PRO PACK</small></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- DEVELOPPEUR : remplacez le nom et la biographie si les informations doivent évoluer. -->
+    <section class="about section-pad" id="developpeur">
+      <div class="container about-layout">
+        <div class="about-mark" aria-hidden="true"><img src="logo.png" alt=""><i></i><i></i></div>
+        <div class="about-copy" data-reveal>
+          <p class="eyebrow eyebrow-dark">À PROPOS DU DÉVELOPPEUR</p>
+          <h2>Un outil de terrain,<br><span>créé par un homme de terrain.</span></h2>
+          <p><strong>Alpha Oumar Diallo</strong> réunit deux métiers : informaticien et vitrier. Taodaluminium est née de cette double compétence, avec une ambition simple : apporter aux professionnels de la vitrerie des outils numériques pratiques, fiables et adaptés à leur réalité quotidienne.</p>
+        </div>
+        <div class="about-quote"><span aria-hidden="true">“</span><p>Conçue par un vitrier,<br>pour les vitriers.</p><small>ALPHA OUMAR DIALLO</small></div>
+      </div>
+    </section>
+
+    <!-- Questions courantes pour lever les doutes avant le téléchargement ou le contact. -->
+    <section class="faq section-pad" id="questions">
+      <div class="container faq-layout">
+        <div class="faq-intro">
+          <p class="eyebrow eyebrow-dark">BESOIN D'UNE PRÉCISION ?</p>
+          <h2>Les réponses,<br><span>sans détour.</span></h2>
+          <p>Une autre question ? Écrivez-nous, nous vous répondrons directement.</p>
+          <!-- WHATSAPP QUESTIONS : remplacez ici aussi le numéro si vous changez de contact. -->
+          <a class="text-link" href="https://wa.me/224620780868?text=Bonjour%2C%20j%27ai%20une%20question%20sur%20Taodaluminium." target="_blank" rel="noopener noreferrer">Poser une question sur WhatsApp <span aria-hidden="true">↗</span></a>
+        </div>
+        <div class="faq-list" data-reveal>
+          <details class="faq-item">
+            <summary>Sur quels appareils puis-je utiliser Taodaluminium ?<span aria-hidden="true"></span></summary>
+            <p>Taodaluminium est proposée en version Android (APK) et Windows. Choisissez le bouton correspondant à votre appareil dans la section téléchargement.</p>
+          </details>
+          <details class="faq-item">
+            <summary>Comment installer l'application Android ?<span aria-hidden="true"></span></summary>
+            <p>Téléchargez l'APK, ouvrez le fichier puis suivez les indications d'Android pour finaliser l'installation. Le guide de cette page vous accompagne étape par étape.</p>
+          </details>
+          <details class="faq-item">
+            <summary>Qu'apporte le Pack Premium ?<span aria-hidden="true"></span></summary>
+            <p>Le Pack Premium ajoute notamment votre logo et votre signature sur les devis, la gestion de stock et un support prioritaire. Contactez-nous sur WhatsApp pour en savoir plus.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Pied de page : marque, copyright et lien de retour en haut. -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <a class="brand footer-brand" href="#accueil" aria-label="Taodaluminium, retour à l'accueil">
+        <img class="brand-logo" src="logo.png" alt="">
+        <span class="brand-name">aluminium</span>
+      </a>
+      <!-- COPYRIGHT : mettez à jour l'année ou le nom du développeur si nécessaire. -->
+      <p>Taodaluminium © 2025 — Développé par Alpha Oumar Diallo.</p>
+      <a class="footer-top" href="#accueil">Retour en haut <span aria-hidden="true">↑</span></a>
+    </div>
+  </footer>
+  <div class="toast" id="download-toast" role="status" aria-live="polite"></div>
+  <!-- BOUTONS FLOTTANTS : gardez les mêmes chemins href et noms download que les boutons du hero. -->
+  <nav class="download-dock mobile-download-cta" aria-label="Téléchargements Taodaluminium">
+    <a class="download-dock-link download-dock-android" href="downloads/taodaluminium.apk" download="taodaluminium.apk" data-download aria-label="Télécharger Taodaluminium pour Android">
+      <span class="dock-icon" aria-hidden="true">↓</span>
+      <span><strong>Android</strong><small>APK</small></span>
+    </a>
+    <a class="download-dock-link download-dock-windows" href="downloads/taodaluminium-windows.exe" download="taodaluminium-windows.exe" data-download aria-label="Télécharger Taodaluminium pour Windows">
+      <span class="dock-icon dock-windows-icon" aria-hidden="true">⊞</span>
+      <span><strong>Windows</strong><small>Ordinateur</small></span>
+    </a>
+  </nav>
+</body>
+</html>
