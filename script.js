@@ -14,9 +14,9 @@ document.querySelectorAll('[data-download]').forEach((link) => {
   link.addEventListener('click', (event) => {
     if (link.getAttribute('href') !== '#') return;
 
-    // Evite le saut en haut de page et rappelle ou renseigner le chemin du fichier manquant.
+    // Evite le saut en haut de page et rappelle d'ajouter le lien public de release GitHub.
     event.preventDefault();
-    downloadToast.textContent = 'Le lien de téléchargement n’est pas encore configuré. Ajoutez le chemin de votre fichier Android ou Windows dans index.html.';
+    downloadToast.textContent = 'Le lien de téléchargement GitHub n’est pas encore configuré. Ajoutez l’URL publique de votre release Android ou Windows dans index.html.';
     downloadToast.classList.add('is-visible');
     window.clearTimeout(toastTimeout);
     // Masque automatiquement la notification apres 4,5 secondes.
