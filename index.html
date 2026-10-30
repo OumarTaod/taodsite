@@ -4,16 +4,16 @@
   <!-- CONFIGURATION SEO : adaptez description, mots-clés et titre à votre présentation commerciale. -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#1b4264">
+  <meta name="theme-color" content="#102c43">
   <meta name="description" content="Taodaluminium aide les vitriers à calculer leurs débits aluminium, optimiser leurs vitrages et créer des devis professionnels. Téléchargez l'application Android et Windows.">
   <meta name="keywords" content="calcul aluminium vitrier, logiciel menuiserie aluminium gratuit, application devis vitrerie, coupage aluminium libanais, Alpha Oumar Diallo Taodaluminium">
-  <title>Taodaluminium — L'application des vitriers pros</title>
+  <title>TaodAluminium — L'outil des vitriers qui avancent</title>
   <!-- LOGO / FAVICON : conservez logo.png à côté de index.html, ou remplacez ce chemin partout ci-dessous. -->
   <link rel="icon" type="image/png" href="logo.png">
   <link rel="stylesheet" href="style.css">
   <script src="script.js" defer></script>
 </head>
-<body>
+<body class="home-page">
   <!-- En-tête fixe : identité visuelle et accès rapide au contact WhatsApp. -->
   <header class="site-header">
     <div class="container header-inner">
@@ -23,11 +23,14 @@
         <span class="brand-name">aluminium</span>
       </a>
       <nav class="main-nav" aria-label="Navigation principale">
-        <a href="#avantages">Avantages</a>
-        <a href="#installation">Installation</a>
-        <a href="#premium">Premium</a>
-        <a href="#questions">Questions</a>
+        <a class="is-current" href="#accueil">Accueil</a>
+        <a href="avantages.html">Avantages</a>
+        <a href="ecrans.html">Écrans</a>
+        <a href="installation.html">Installation</a>
+        <a href="premium.html">Premium</a>
+        <a href="questions.html">Questions</a>
       </nav>
+      <div class="header-live"><i aria-hidden="true"></i><span>Application active</span></div>
       <!-- WHATSAPP : remplacez 224620780868 par votre numéro international sans + ni espaces. -->
       <a class="button button-outline header-contact" href="https://wa.me/224620780868?text=Bonjour%2C%20je%20souhaite%20en%20savoir%20plus%20sur%20Taodaluminium." target="_blank" rel="noopener noreferrer">Parlons-en <span aria-hidden="true">↗</span></a>
     </div>
@@ -38,9 +41,9 @@
     <section class="hero" id="accueil">
       <div class="container hero-layout">
         <div class="hero-copy">
-          <p class="eyebrow"><span class="eyebrow-dot"></span> L'atelier du vitrier, version numérique</p>
-          <h1>Votre métier.<br>Vos mesures.<br><span>Tout est plus simple.</span></h1>
-          <p class="hero-lead">Du calcul de débit au devis client, Taodaluminium vous accompagne sur le terrain. Un outil pratique, imaginé par un vitrier qui connaît votre quotidien.</p>
+          <p class="eyebrow"><span class="eyebrow-dot"></span> L'outil métier des vitriers</p>
+          <h1>Travaillez plus vite.<br>Calculez plus juste.<br><span>Avancez serein.</span></h1>
+          <p class="hero-lead">TaodAluminium réunit vos calculs, vos chantiers et vos devis dans une seule application claire, conçue pour le terrain.</p>
           <!-- TELECHARGEMENTS : fichiers locaux dans "Taod aluminium". Garde les mêmes noms lors des mises à jour. -->
           <div class="hero-actions" id="telechargements">
             <a class="button button-download" href="Taod%20aluminium/version%20Android/taod.apk" download="taod.apk" data-download aria-label="Télécharger Taodaluminium pour Android, fichier APK">
@@ -59,8 +62,12 @@
 
         <!-- APERCU INTERACTIF FICTIF : la surface est une aire simple, sans retraits, séries ou règles réelles de débit. -->
         <!-- Pour adapter la démonstration, modifiez les séries, valeurs d'exemple et options du vitrage ci-dessous. -->
-        <div class="hero-visual" aria-label="Aperçu interactif d'un calcul de vitrerie">
+        <div class="hero-visual" aria-label="Aperçu de l'application Taod Aluminium">
           <div class="visual-glow"></div>
+          <figure class="real-app-preview">
+            <img src="images_taod/pc/accueil_verison_pc.png" alt="Écran d'accueil de l'application Taod Aluminium sur ordinateur">
+            <figcaption><span class="preview-pulse"></span> Interface réelle · Windows</figcaption>
+          </figure>
           <div class="app-card demo-app">
             <div class="app-topbar">
               <img class="app-brand-logo" src="logo.png" alt="Taod Aluminium">
@@ -147,6 +154,61 @@
         <div><span class="trust-icon" aria-hidden="true">▤</span><span>Devis prêts pour vos clients</span></div>
         <span class="trust-divider" aria-hidden="true"></span>
         <div><span class="trust-icon" aria-hidden="true">◇</span><span>Conçue par un vitrier</span></div>
+      </div>
+    </section>
+
+    <section class="home-paths section-pad" aria-labelledby="home-paths-title">
+      <div class="container">
+        <div class="home-paths-heading">
+          <div><p class="eyebrow eyebrow-dark">PAR OÙ COMMENCER ?</p><h2 id="home-paths-title">Tout est à sa place.<br><span>Choisissez votre prochaine action.</span></h2></div>
+          <p>Pas besoin de chercher dans un long menu : chaque espace répond à un besoin précis de votre atelier.</p>
+        </div>
+        <div class="home-path-grid">
+          <a class="home-path-card home-path-primary" href="avantages.html" data-reveal><span class="home-path-icon">⌁</span><span class="home-path-number">01</span><h3>Découvrir l'application</h3><p>Comprendre les bénéfices et les outils qui vous font gagner du temps.</p><span class="home-path-link">Voir les avantages <b>↗</b></span></a>
+          <a class="home-path-card" href="ecrans.html" data-reveal><span class="home-path-icon">▣</span><span class="home-path-number">02</span><h3>Voir les écrans</h3><p>Explorer l'interface réelle Windows et Android avant de télécharger.</p><span class="home-path-link">Explorer l'interface <b>↗</b></span></a>
+          <a class="home-path-card" href="installation.html" data-reveal><span class="home-path-icon">↓</span><span class="home-path-number">03</span><h3>Télécharger maintenant</h3><p>Choisir Android ou Windows et commencer en quelques minutes.</p><span class="home-path-link">Voir l'installation <b>↗</b></span></a>
+        </div>
+      </div>
+    </section>
+
+    <section class="screens section-pad" id="ecrans">
+      <div class="container">
+        <div class="section-heading screens-heading">
+          <p class="eyebrow eyebrow-dark">DANS L'APPLICATION</p>
+          <h2>Un espace de travail pensé<br><span>pour aller droit au résultat.</span></h2>
+          <p>Une interface claire pour calculer, gérer vos chantiers et préparer vos documents professionnels.</p>
+        </div>
+        <div class="screen-grid">
+          <figure class="screen-card screen-card-large" data-reveal>
+            <div class="screen-image"><img src="images_taod/pc/coupage_v_pc.png" alt="Écran de calcul de coupe Taod Aluminium" loading="lazy"></div>
+            <figcaption><span>01</span><div><strong>Calcul de coupe</strong><small>Fenêtres, portes et profilés aluminium</small></div></figcaption>
+          </figure>
+          <figure class="screen-card" data-reveal>
+            <div class="screen-image"><img src="images_taod/pc/devis_v_pc.png" alt="Exemple de devis professionnel Taod Aluminium" loading="lazy"></div>
+            <figcaption><span>02</span><div><strong>Devis professionnels</strong><small>Présentez vos matériaux et vos montants clairement</small></div></figcaption>
+          </figure>
+          <figure class="screen-card" data-reveal>
+            <div class="screen-image"><img src="images_taod/pc/vitreage_v_pc.png" alt="Écran de calcul de vitrage Taod Aluminium" loading="lazy"></div>
+            <figcaption><span>03</span><div><strong>Gestion du vitrage</strong><small>Mesures, surfaces et optimisation de la matière</small></div></figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="mobile-screens section-pad">
+      <div class="container mobile-screens-layout">
+        <div class="mobile-screens-copy" data-reveal>
+          <p class="eyebrow eyebrow-dark">VERSION ANDROID</p>
+          <h2>Votre atelier,<br><span>toujours avec vous.</span></h2>
+          <p>Retrouvez les outils essentiels de TaodAluminium sur votre téléphone, sur le chantier comme à l'atelier.</p>
+          <a class="button button-mobile-download" href="Taod%20aluminium/version%20Android/taod.apk" download="taod.apk"><span aria-hidden="true">↓</span> Télécharger l'APK Android <span aria-hidden="true">↗</span></a>
+        </div>
+        <div class="phone-gallery" aria-label="Captures de l'application Android">
+          <figure class="phone-shot phone-shot-main" data-reveal><img src="images_taod/android/12-menu-principal-android.jpeg" alt="Menu principal de TaodAluminium sur Android" loading="lazy"></figure>
+          <figure class="phone-shot phone-shot-top" data-reveal><img src="images_taod/android/02-dimensions-vitrage.jpeg" alt="Optimisation du vitrage sur Android" loading="lazy"></figure>
+          <figure class="phone-shot phone-shot-bottom" data-reveal><img src="images_taod/android/06-suivi-reglement-chantier.jpeg" alt="Suivi des règlements d'un chantier sur Android" loading="lazy"></figure>
+          <span class="phone-orbit phone-orbit-one" aria-hidden="true"></span><span class="phone-orbit phone-orbit-two" aria-hidden="true"></span>
+        </div>
       </div>
     </section>
 
@@ -282,7 +344,7 @@
         <span class="brand-name">aluminium</span>
       </a>
       <!-- COPYRIGHT : mettez à jour l'année ou le nom du développeur si nécessaire. -->
-      <p>Taodaluminium © 2025 — Développé par Alpha Oumar Diallo.</p>
+      <p>Taodaluminium © 2026 — Développé par Alpha Oumar Diallo.</p>
       <a class="footer-top" href="#accueil">Retour en haut <span aria-hidden="true">↑</span></a>
     </div>
   </footer>

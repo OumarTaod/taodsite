@@ -28,7 +28,15 @@ document.querySelectorAll('[data-download]').forEach((link) => {
 
 // Garde les boutons de telechargement a portee de pouce apres la section d'accueil.
 const heroSection = document.querySelector('#accueil');
-const mobileDownloadCta = document.querySelector('.mobile-download-cta');
+let mobileDownloadCta = document.querySelector('.mobile-download-cta');
+
+if (!mobileDownloadCta) {
+  mobileDownloadCta = document.createElement('nav');
+  mobileDownloadCta.className = 'download-dock mobile-download-cta is-visible';
+  mobileDownloadCta.setAttribute('aria-label', 'Téléchargements Taodaluminium');
+  mobileDownloadCta.innerHTML = '<a class="download-dock-link download-dock-android" href="Taod%20aluminium/version%20Android/taod.apk" download="taod.apk"><span class="dock-icon">↓</span><span><strong>Android</strong><small>APK</small></span></a><a class="download-dock-link download-dock-windows" href="Taod%20aluminium/version%20Windows/Taod_Setup.exe" download="Taod_Setup.exe"><span class="dock-icon dock-windows-icon">⊞</span><span><strong>Windows</strong><small>Ordinateur</small></span></a>';
+  document.body.appendChild(mobileDownloadCta);
+}
 
 if (heroSection && mobileDownloadCta && 'IntersectionObserver' in window) {
   // Le dock apparait quand le hero sort de la zone visible puis disparait au retour en haut.
@@ -149,4 +157,100 @@ if (!prefersReducedMotion && 'IntersectionObserver' in window) {
 } else {
   // Affiche les contenus directement si le navigateur ne prend pas en charge l'observateur.
   revealElements.forEach((element) => element.classList.add('is-visible'));
+}
+
+// PROGRESSION DE LECTURE : une fine ligne indique la position dans la page.
+const scrollProgress = document.createElement('div');
+scrollProgress.className = 'scroll-progress';
+scrollProgress.setAttribute('aria-hidden', 'true');
+document.body.appendChild(scrollProgress);
+
+const updateScrollProgress = () => {
+  const scrollable = document.documentElement.scrollHeight - window.innerHeight;
+  const progress = scrollable > 0 ? (window.scrollY / scrollable) * 100 : 0;
+  scrollProgress.style.setProperty('--scroll-progress', `${progress}%`);
+  document.querySelector('.site-header')?.classList.toggle('is-scrolled', window.scrollY > 18);
+};
+
+window.addEventListener('scroll', updateScrollProgress, { passive: true });
+updateScrollProgress();
+
+// NAVIGATION ACTIVE : le lien de la section visible reste mis en avant.
+const sectionLinks = Array.from(document.querySelectorAll('.main-nav a[href^="#"]'));
+const observedSections = sectionLinks
+  .map((link) => document.querySelector(link.getAttribute('href')))
+  .filter(Boolean);
+
+if ('IntersectionObserver' in window && observedSections.length) {
+  const sectionObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) return;
+      sectionLinks.forEach((link) => link.classList.toggle('is-current', link.getAttribute('href') === `#${entry.target.id}`));
+    });
+  }, { rootMargin: '-35% 0px -55% 0px', threshold: 0 });
+  observedSections.forEach((section) => sectionObserver.observe(section));
+}
+
+// TILT LÉGER : donne de la profondeur aux cartes sur ordinateur, sans gêner le toucher.
+if (!prefersReducedMotion && window.matchMedia('(pointer: fine)').matches) {
+  document.querySelectorAll('.benefit-card, .screen-card, .premium-panel').forEach((card) => {
+    card.addEventListener('pointermove', (event) => {
+      const bounds = card.getBoundingClientRect();
+      const x = (event.clientX - bounds.left) / bounds.width - 0.5;
+      const y = (event.clientY - bounds.top) / bounds.height - 0.5;
+      card.style.setProperty('--tilt-x', `${(y * -3).toFixed(2)}deg`);
+      card.style.setProperty('--tilt-y', `${(x * 3).toFixed(2)}deg`);
+      card.classList.add('is-tilting');
+    });
+    card.addEventListener('pointerleave', () => {
+      card.classList.remove('is-tilting');
+      card.style.removeProperty('--tilt-x');
+      card.style.removeProperty('--tilt-y');
+    });
+  });
+}
+
+// RIPPLE : retour tactile visuel sur les boutons et liens d'action.
+document.querySelectorAll('.button, .download-dock-link, .text-link').forEach((control) => {
+  control.addEventListener('click', (event) => {
+    if (prefersReducedMotion) return;
+    const bounds = control.getBoundingClientRect();
+    const ripple = document.createElement('span');
+    ripple.className = 'interaction-ripple';
+    ripple.style.left = `${event.clientX - bounds.left}px`;
+    ripple.style.top = `${event.clientY - bounds.top}px`;
+    control.appendChild(ripple);
+    window.setTimeout(() => ripple.remove(), 550);
+  });
+});
+
+// LIBELLÉS SIMPLES : on explique clairement le téléchargement, sans jargon technique.
+document.querySelectorAll('a[href*="version%20Android"]').forEach((link) => {
+  link.setAttribute('aria-label', 'Télécharger Taodaluminium pour Android');
+  const label = link.querySelector('strong');
+  if (label) label.textContent = 'Télécharger pour Android';
+  else if (link.classList.contains('button-mobile-download')) link.innerHTML = '<span aria-hidden="true">↓</span> Télécharger pour Android <span aria-hidden="true">↗</span>';
+});
+document.querySelectorAll('a[href*="version%20Windows"]').forEach((link) => {
+  link.setAttribute('aria-label', 'Télécharger Taodaluminium pour Windows');
+  const label = link.querySelector('strong');
+  if (label) label.textContent = 'Télécharger pour Windows';
+});
+
+// AIDE INSTALLATION WINDOWS : le mot de passe est visible juste sous les téléchargements.
+if (document.querySelector('.page-download-actions') && /installation\.html$/i.test(window.location.pathname)) {
+  const passwordNote = document.createElement('div');
+  passwordNote.className = 'windows-password-note';
+  passwordNote.setAttribute('role', 'note');
+  passwordNote.innerHTML = '<span class="windows-password-icon">🔐</span><div><strong>Installation Windows</strong><p>Le mot de passe demandé pendant l\'installation est <code>OumarAOD</code>.</p></div>';
+  document.querySelector('.page-download-actions').after(passwordNote);
+
+  const installSection = document.querySelector('.install');
+  if (installSection && !document.querySelector('.windows-install')) {
+    const windowsSection = document.createElement('section');
+    windowsSection.className = 'windows-install section-pad';
+    windowsSection.innerHTML = `<div class="container install-layout"><div class="install-intro" data-reveal><p class="eyebrow eyebrow-dark">VERSION WINDOWS</p><h2>Installez TaodAluminium<br><span>sur votre ordinateur.</span></h2><p>Suivez ces quelques étapes pour installer la version Windows sans difficulté.</p></div><ol class="steps"><li class="step" data-reveal><span class="step-icon windows-step-icon">↓</span><div><span class="step-label">ÉTAPE 01</span><h3>Téléchargez pour Windows</h3><p>Cliquez sur le bouton « Télécharger pour Windows » pour récupérer le fichier d'installation.</p></div><span class="step-index">01</span></li><li class="step" data-reveal><span class="step-icon windows-step-icon">▣</span><div><span class="step-label">ÉTAPE 02</span><h3>Ouvrez le fichier d'installation</h3><p>Retrouvez <b>Taod_Setup.exe</b> dans vos téléchargements, puis lancez-le.</p></div><span class="step-index">02</span></li><li class="step" data-reveal><span class="step-icon windows-step-icon">🔐</span><div><span class="step-label">ÉTAPE 03</span><h3>Saisissez le mot de passe</h3><p>Lorsque Windows le demande, saisissez <b>OumarAOD</b>, puis validez.</p></div><span class="step-index">03</span></li><li class="step" data-reveal><span class="step-icon windows-step-icon">✓</span><div><span class="step-label">ÉTAPE 04</span><h3>Terminez l'installation</h3><p>Suivez l'assistant jusqu'à la fin, puis ouvrez TaodAluminium depuis le raccourci.</p></div><span class="step-index">04</span></li></ol></div>`;
+    installSection.after(windowsSection);
+    windowsSection.querySelectorAll('[data-reveal]').forEach((element) => element.classList.add('is-visible'));
+  }
 }
